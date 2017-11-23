@@ -5,29 +5,16 @@ namespace app\modules\darkside\controllers;
 use Yii;
 use app\modules\darkside\models\Phones;
 use app\modules\darkside\models\PhonesSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * PhonesController implements the CRUD actions for Phones model.
  */
-class PhonesController extends Controller
+class PhonesController extends AppDarksideController
 {
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all Phones models.

@@ -5,29 +5,16 @@ namespace app\modules\darkside\controllers;
 use Yii;
 use app\modules\darkside\models\Factories;
 use app\modules\darkside\models\FactoriesSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * FactoriesController implements the CRUD actions for Factories model.
  */
-class FactoriesController extends Controller
+class FactoriesController extends AppDarksideController
 {
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all Factories models.

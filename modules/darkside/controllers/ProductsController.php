@@ -5,29 +5,16 @@ namespace app\modules\darkside\controllers;
 use Yii;
 use app\modules\darkside\models\Products;
 use app\modules\darkside\models\ProductsSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * ProductsController implements the CRUD actions for Products model.
  */
-class ProductsController extends Controller
+class ProductsController extends AppDarksideController
 {
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all Products models.

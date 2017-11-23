@@ -5,29 +5,16 @@ namespace app\modules\darkside\controllers;
 use Yii;
 use app\modules\darkside\models\Regions;
 use app\modules\darkside\models\RegionsSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * RegionsController implements the CRUD actions for Regions model.
  */
-class RegionsController extends Controller
+class RegionsController extends AppDarksideController
 {
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
-        ];
-    }
 
     /**
      * Lists all Regions models.
