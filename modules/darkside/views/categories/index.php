@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
 //            'parent_id',
+            'category_title',
             [
                 'attribute' => 'parent_id',
                 'value' => function ($data) {
@@ -37,7 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $parent;
                 },
             ],
-            'category_title',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
