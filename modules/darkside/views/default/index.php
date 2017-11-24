@@ -3,12 +3,12 @@
     <p>
     <h2>Dark Side!!!</h2>
     <hr>
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
+    <ul class="nav navbar-nav">
+        <li><?=\yii\helpers\Html::a('Пользователи',['./users'])?>
+        <li><?=\yii\helpers\Html::a('Фабрики',['./factories'])?>
+        <li><?=\yii\helpers\Html::a('Телефоны',['./phones'])?>
+        <li><?=\yii\helpers\Html::a('Изделия',['./products'])?>
+        <li><?=\yii\helpers\Html::a('Регионы',['./regions'])?>
+    </ul>
     </p>
 </div>
