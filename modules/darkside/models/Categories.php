@@ -19,6 +19,11 @@ class Categories extends \yii\db\ActiveRecord
         return 'dvg73_categories';
     }
 
+    public function getCategories()
+    {
+        return $this->hasOne(Categories::className(), ['id' => 'parent_id']);
+    }
+
     /**
      * @inheritdoc
      */

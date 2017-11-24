@@ -29,7 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'parent_id',
+//            'parent_id',
+            [
+                'attribute' => 'parent_id',
+                'value' => function ($data) {
+                    $parent = '/';
+                    if (NULL !== $data->categories) {
+                        $parent = $data->categories->category_title;
+                    };
+                    return $parent;
+                },
+            ],
             'category_title',
         ],
     ]) ?>
