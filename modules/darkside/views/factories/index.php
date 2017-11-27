@@ -33,7 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'factory_country',
             'factory_website:url',
             'factory_email:email',
-            'factory_logo',
+            //'factory_logo',
+			[
+            'label' => 'Картинка',
+            'format' => 'raw',
+            'value' => function($data){
+                return Html::img(Url::toRoute(@web.$data->factory_logo),[
+                    'alt'=>'yii2 - картинка в gridview',
+                    'style' => 'width:15px;'
+                ]);
+            },
+			],
             // 'website100',
             // 'compare',
 
