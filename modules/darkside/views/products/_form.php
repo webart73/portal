@@ -12,13 +12,15 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'factory_id')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'factoryId')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'product_title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'productTitle')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'product_desc')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'productDesc')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'product_image')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'productImage')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'showProduct')->textInput() ?>
 
     <?= $form->field($model, 'link100')->textInput(['maxlength' => true]) ?>
 

@@ -1,5 +1,5 @@
 <li>
-    <a href="<?=\yii\helpers\Url::to(['category/view','id'=>$category['id']])?>"><?= $category['category_title']?></a>
+    <a href="<?=\yii\helpers\Url::to(['category/view','id'=>$category['id']])?>"><?= $category['categoryTitle']?></a>
     <?php if (isset($category['childs'])):?>
         <ul>
             <?=$this->getMenuHtml($category['childs'])?>

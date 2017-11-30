@@ -2,21 +2,29 @@
 
 namespace app\modules\darkside\models;
 
+
 /**
  * This is the model class for table "dvg73_factories".
  *
  * @property string $id
  * @property string $user_id
- * @property string $factory_title
- * @property string $factory_desc
- * @property string $factory_address
- * @property string $factory_region
- * @property string $factory_country
- * @property string $factory_website
- * @property string $factory_email
- * @property string $factory_logo
- * @property string $website100
+ * @property string $factoryTitle
+ * @property string $factoryDesc
+ * @property string $factoryAddress
+ * @property string $factoryRegion
+ * @property string $factoryCountry
+ * @property string $factoryWebsite
+ * @property string $factoryLogo
+ * @property integer $factoryType
+ * @property string $factoryHits
+ * @property integer $factoryRating
+ * @property integer $bannerTop
+ * @property integer $bannerMain
+ * @property integer $bannerCategory
+ * @property integer $bannerRegion
+ * @property integer $factoryShow
  * @property integer $compare
+ * @property string $website100
  */
 class Factories extends \yii\db\ActiveRecord
 {
@@ -34,13 +42,13 @@ class Factories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'factory_title', 'factory_desc', 'factory_email'], 'required'],
-            [['user_id', 'compare'], 'integer'],
-            [['factory_desc'], 'string'],
-            [['factory_title', 'factory_address', 'website100'], 'string', 'max' => 255],
-            [['factory_region'], 'string', 'max' => 64],
-            [['factory_country'], 'string', 'max' => 16],
-            [['factory_website', 'factory_email', 'factory_logo'], 'string', 'max' => 128],
+            [['user_id', 'factoryTitle', 'factoryDesc'], 'required'],
+            [['user_id', 'factoryType', 'factoryHits', 'factoryRating', 'bannerTop', 'bannerMain', 'bannerCategory', 'bannerRegion', 'factoryShow', 'compare'], 'integer'],
+            [['factoryDesc'], 'string'],
+            [['factoryTitle', 'factoryAddress', 'website100'], 'string', 'max' => 255],
+            [['factoryRegion'], 'string', 'max' => 64],
+            [['factoryCountry'], 'string', 'max' => 16],
+            [['factoryWebsite', 'factoryLogo'], 'string', 'max' => 128],
         ];
     }
 
@@ -52,16 +60,23 @@ class Factories extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'user_id' => 'User ID',
-            'factory_title' => 'Название',
-            'factory_desc' => 'Описание',
-            'factory_address' => 'Адрес',
-            'factory_region' => 'Регион',
-            'factory_country' => 'Страна',
-            'factory_website' => 'Сайт',
-            'factory_email' => 'Email',
-            'factory_logo' => 'Логотип',
-            'website100' => 'Website100',
+            'factoryTitle' => 'Factory Title',
+            'factoryDesc' => 'Factory Desc',
+            'factoryAddress' => 'Factory Address',
+            'factoryRegion' => 'Factory Region',
+            'factoryCountry' => 'Factory Country',
+            'factoryWebsite' => 'Factory Website',
+            'factoryLogo' => 'Factory Logo',
+            'factoryType' => 'Factory Type',
+            'factoryHits' => 'Factory Hits',
+            'factoryRating' => 'Factory Rating',
+            'bannerTop' => 'Banner Top',
+            'bannerMain' => 'Banner Main',
+            'bannerCategory' => 'Banner Category',
+            'bannerRegion' => 'Banner Region',
+            'factoryShow' => 'Factory Show',
             'compare' => 'Compare',
+            'website100' => 'Website100',
         ];
     }
 }

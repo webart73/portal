@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model app\modules\darkside\models\Users */
 
-$this->title = $model->name;
+$this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -29,13 +29,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
-            'username',
+            'userGroup',
+            'userName',
+            'login',
             'password',
-            'email:email',
+            'userPhone',
+            'userEmail:email',
+            'activation',
+            'block',
             'registerDate',
             'lastvisitDate',
-            'auth_key',
+            'authKey',
         ],
     ]) ?>
 

@@ -2,10 +2,8 @@
 
 namespace app\modules\darkside\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\darkside\models\Users;
 
 /**
  * UsersSearch represents the model behind the search form about `app\modules\darkside\models\Users`.
@@ -18,8 +16,8 @@ class UsersSearch extends Users
     public function rules()
     {
         return [
-            [['id'], 'integer'],
-            [['name', 'username', 'password', 'email', 'registerDate', 'lastvisitDate', 'auth_key'], 'safe'],
+            [['id', 'userGroup', 'activation', 'block'], 'integer'],
+            [['userName', 'login', 'password', 'userPhone', 'userEmail', 'registerDate', 'lastvisitDate', 'authKey'], 'safe'],
         ];
     }
 
@@ -60,15 +58,19 @@ class UsersSearch extends Users
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
+            'userGroup' => $this->userGroup,
+            'activation' => $this->activation,
+            'block' => $this->block,
             'registerDate' => $this->registerDate,
             'lastvisitDate' => $this->lastvisitDate,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'username', $this->username])
+        $query->andFilterWhere(['like', 'userName', $this->userName])
+            ->andFilterWhere(['like', 'login', $this->login])
             ->andFilterWhere(['like', 'password', $this->password])
-            ->andFilterWhere(['like', 'email', $this->email])
-            ->andFilterWhere(['like', 'auth_key', $this->auth_key]);
+            ->andFilterWhere(['like', 'userPhone', $this->userPhone])
+            ->andFilterWhere(['like', 'userEmail', $this->userEmail])
+            ->andFilterWhere(['like', 'authKey', $this->authKey]);
 
         return $dataProvider;
     }

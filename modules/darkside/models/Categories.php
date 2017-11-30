@@ -2,12 +2,15 @@
 
 namespace app\modules\darkside\models;
 
+
 /**
  * This is the model class for table "dvg73_categories".
  *
  * @property string $id
- * @property string $parent_id
- * @property string $category_title
+ * @property string $parentId
+ * @property string $categoryTitle
+ * @property string $categoryDesc
+ * @property string $categoryImage
  */
 class Categories extends \yii\db\ActiveRecord
 {
@@ -21,7 +24,7 @@ class Categories extends \yii\db\ActiveRecord
 
     public function getCategories()
     {
-        return $this->hasOne(Categories::className(), ['id' => 'parent_id']);
+        return $this->hasOne(Categories::className(), ['id' => 'parentId']);
     }
 
     /**
@@ -30,9 +33,11 @@ class Categories extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parent_id', 'category_title'], 'required'],
-            [['parent_id'], 'integer'],
-            [['category_title'], 'string', 'max' => 64],
+            [['parentId', 'categoryTitle'], 'required'],
+            [['parentId'], 'integer'],
+            [['categoryDesc'], 'string'],
+            [['categoryTitle'], 'string', 'max' => 64],
+            [['categoryImage'], 'string', 'max' => 255],
         ];
     }
 
@@ -43,8 +48,10 @@ class Categories extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'parent_id' => 'Parent ID',
-            'category_title' => 'Category Title',
+            'parentId' => 'Parent ID',
+            'categoryTitle' => 'Category Title',
+            'categoryDesc' => 'Category Desc',
+            'categoryImage' => 'Category Image',
         ];
     }
 }

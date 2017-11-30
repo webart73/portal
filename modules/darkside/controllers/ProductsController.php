@@ -13,10 +13,6 @@ use yii\web\NotFoundHttpException;
 class ProductsController extends AppDarksideController
 {
     /**
-     * @inheritdoc
-     */
-
-    /**
      * Lists all Products models.
      * @return mixed
      */

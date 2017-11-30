@@ -2,10 +2,8 @@
 
 namespace app\modules\darkside\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\darkside\models\Products;
 
 /**
  * ProductsSearch represents the model behind the search form about `app\modules\darkside\models\Products`.
@@ -18,8 +16,8 @@ class ProductsSearch extends Products
     public function rules()
     {
         return [
-            [['id', 'factory_id'], 'integer'],
-            [['product_title', 'product_desc', 'product_image', 'link100'], 'safe'],
+            [['id', 'factoryId', 'showProduct'], 'integer'],
+            [['productTitle', 'productDesc', 'productImage', 'link100'], 'safe'],
         ];
     }
 
@@ -60,12 +58,13 @@ class ProductsSearch extends Products
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'factory_id' => $this->factory_id,
+            'factoryId' => $this->factoryId,
+            'showProduct' => $this->showProduct,
         ]);
 
-        $query->andFilterWhere(['like', 'product_title', $this->product_title])
-            ->andFilterWhere(['like', 'product_desc', $this->product_desc])
-            ->andFilterWhere(['like', 'product_image', $this->product_image])
+        $query->andFilterWhere(['like', 'productTitle', $this->productTitle])
+            ->andFilterWhere(['like', 'productDesc', $this->productDesc])
+            ->andFilterWhere(['like', 'productImage', $this->productImage])
             ->andFilterWhere(['like', 'link100', $this->link100]);
 
         return $dataProvider;

@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
@@ -26,26 +27,33 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             //'user_id',
-            'factory_title',
-            //'factory_desc:ntext',
-            'factory_address',
-            'factory_region',
-            // 'factory_country',
-            'factory_website:url',
-            'factory_email:email',
-            //'factory_logo',
-			[
-            'label' => 'Картинка',
-            'format' => 'raw',
-            'value' => function($data){
-                return Html::img(Url::toRoute(@web.$data->factory_logo),[
-                    'alt'=>'yii2 - картинка в gridview',
-                    'style' => 'width:15px;'
-                ]);
-            },
-			],
-            // 'website100',
+            'factoryTitle',
+            //'factoryDesc:ntext',
+            'factoryAddress',
+            // 'factoryRegion',
+            // 'factoryCountry',
+            // 'factoryWebsite',
+            // 'factoryLogo',
+            [
+                'label' => 'Картинка',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::img(Url::toRoute(  "@web/$data->factoryLogo"), [
+                        'alt' => $data->factoryTitle,
+                        'style' => 'width:150px;'
+                    ]);
+                },
+            ],
+            // 'factoryType',
+            // 'factoryHits',
+            // 'factoryRating',
+            // 'bannerTop',
+            // 'bannerMain',
+            // 'bannerCategory',
+            // 'bannerRegion',
+            // 'factoryShow',
             // 'compare',
+            // 'website100',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

@@ -19,25 +19,39 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'user_id') ?>
 
-    <?= $form->field($model, 'factory_title') ?>
+    <?= $form->field($model, 'factoryTitle') ?>
 
-    <?= $form->field($model, 'factory_desc') ?>
+    <?= $form->field($model, 'factoryDesc') ?>
 
-    <?= $form->field($model, 'factory_address') ?>
+    <?= $form->field($model, 'factoryAddress') ?>
 
-    <?php // echo $form->field($model, 'factory_region') ?>
+    <?php // echo $form->field($model, 'factoryRegion') ?>
 
-    <?php // echo $form->field($model, 'factory_country') ?>
+    <?php // echo $form->field($model, 'factoryCountry') ?>
 
-    <?php // echo $form->field($model, 'factory_website') ?>
+    <?php // echo $form->field($model, 'factoryWebsite') ?>
 
-    <?php // echo $form->field($model, 'factory_email') ?>
+    <?php // echo $form->field($model, 'factoryLogo') ?>
 
-    <?php // echo $form->field($model, 'factory_logo') ?>
+    <?php // echo $form->field($model, 'factoryType') ?>
 
-    <?php // echo $form->field($model, 'website100') ?>
+    <?php // echo $form->field($model, 'factoryHits') ?>
+
+    <?php // echo $form->field($model, 'factoryRating') ?>
+
+    <?php // echo $form->field($model, 'bannerTop') ?>
+
+    <?php // echo $form->field($model, 'bannerMain') ?>
+
+    <?php // echo $form->field($model, 'bannerCategory') ?>
+
+    <?php // echo $form->field($model, 'bannerRegion') ?>
+
+    <?php // echo $form->field($model, 'factoryShow') ?>
 
     <?php // echo $form->field($model, 'compare') ?>
+
+    <?php // echo $form->field($model, 'website100') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

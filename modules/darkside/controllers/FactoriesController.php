@@ -13,10 +13,6 @@ use yii\web\NotFoundHttpException;
 class FactoriesController extends AppDarksideController
 {
     /**
-     * @inheritdoc
-     */
-
-    /**
      * Lists all Factories models.
      * @return mixed
      */

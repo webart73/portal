@@ -2,10 +2,8 @@
 
 namespace app\modules\darkside\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\darkside\models\Regions;
 
 /**
  * RegionsSearch represents the model behind the search form about `app\modules\darkside\models\Regions`.
@@ -18,8 +16,8 @@ class RegionsSearch extends Regions
     public function rules()
     {
         return [
-            [['id', 'parent_id'], 'integer'],
-            [['region_title'], 'safe'],
+            [['id', 'parentId'], 'integer'],
+            [['regionTitle'], 'safe'],
         ];
     }
 
@@ -60,10 +58,10 @@ class RegionsSearch extends Regions
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'parent_id' => $this->parent_id,
+            'parentId' => $this->parentId,
         ]);
 
-        $query->andFilterWhere(['like', 'region_title', $this->region_title]);
+        $query->andFilterWhere(['like', 'regionTitle', $this->regionTitle]);
 
         return $dataProvider;
     }

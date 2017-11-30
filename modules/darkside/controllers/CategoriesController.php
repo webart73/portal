@@ -13,10 +13,6 @@ use yii\web\NotFoundHttpException;
 class CategoriesController extends AppDarksideController
 {
     /**
-     * @inheritdoc
-     */
-
-    /**
      * Lists all Categories models.
      * @return mixed
      */

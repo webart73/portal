@@ -2,19 +2,22 @@
 
 namespace app\modules\darkside\models;
 
-use Yii;
 
 /**
  * This is the model class for table "dvg73_users".
  *
  * @property string $id
- * @property string $name
- * @property string $username
+ * @property integer $userGroup
+ * @property string $userName
+ * @property string $login
  * @property string $password
- * @property string $email
+ * @property string $userPhone
+ * @property string $userEmail
+ * @property integer $activation
+ * @property integer $block
  * @property string $registerDate
  * @property string $lastvisitDate
- * @property string $auth_key
+ * @property string $authKey
  */
 class Users extends \yii\db\ActiveRecord
 {
@@ -32,10 +35,11 @@ class Users extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['userGroup', 'activation', 'block'], 'integer'],
             [['registerDate', 'lastvisitDate'], 'safe'],
-            [['auth_key'], 'required'],
-            [['name', 'password', 'auth_key'], 'string', 'max' => 128],
-            [['username', 'email'], 'string', 'max' => 32],
+            [['userName', 'password', 'authKey'], 'string', 'max' => 128],
+            [['login', 'userEmail'], 'string', 'max' => 32],
+            [['userPhone'], 'string', 'max' => 12],
         ];
     }
 
@@ -46,13 +50,17 @@ class Users extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'username' => 'Username',
+            'userGroup' => 'User Group',
+            'userName' => 'User Name',
+            'login' => 'Login',
             'password' => 'Password',
-            'email' => 'Email',
+            'userPhone' => 'User Phone',
+            'userEmail' => 'User Email',
+            'activation' => 'Activation',
+            'block' => 'Block',
             'registerDate' => 'Register Date',
             'lastvisitDate' => 'Lastvisit Date',
-            'auth_key' => 'Auth Key',
+            'authKey' => 'Auth Key',
         ];
     }
 }

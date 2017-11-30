@@ -51,7 +51,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function getAuthKey()
     {
-        return $this->auth_key;
+        return $this->authKey;
     }
 
     /**
@@ -59,7 +59,7 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
      */
     public function validateAuthKey($authKey)
     {
-        return $this->auth_key === $authKey;
+        return $this->authKey === $authKey;
     }
 
     /**
@@ -75,6 +75,6 @@ class User extends ActiveRecord implements \yii\web\IdentityInterface
     }
 
     public function generateAuthKey() {
-        $this->auth_key = \Yii::$app->security->generateRandomString();
+        $this->authKey = \Yii::$app->security->generateRandomString();
     }
 }

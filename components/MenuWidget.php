@@ -45,10 +45,10 @@ class MenuWidget extends Widget
     {
         $tree = [];
         foreach ($this->data as $id => &$node) {
-            if (!$node['parent_id'])
+            if (!$node['parentId'])
                 $tree[$id] =& $node;
             else
-                $this->data[$node['parent_id']]['childs'][$node['id']] = &$node;
+                $this->data[$node['parentId']]['childs'][$node['id']] = &$node;
         }
         return $tree;
     }

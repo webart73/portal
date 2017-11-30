@@ -13,10 +13,6 @@ use yii\web\NotFoundHttpException;
 class RegionsController extends AppDarksideController
 {
     /**
-     * @inheritdoc
-     */
-
-    /**
      * Lists all Regions models.
      * @return mixed
      */

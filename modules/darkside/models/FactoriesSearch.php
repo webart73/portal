@@ -2,10 +2,8 @@
 
 namespace app\modules\darkside\models;
 
-use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\darkside\models\Factories;
 
 /**
  * FactoriesSearch represents the model behind the search form about `app\modules\darkside\models\Factories`.
@@ -18,8 +16,8 @@ class FactoriesSearch extends Factories
     public function rules()
     {
         return [
-            [['id', 'user_id', 'compare'], 'integer'],
-            [['factory_title', 'factory_desc', 'factory_address', 'factory_region', 'factory_country', 'factory_website', 'factory_email', 'factory_logo', 'website100'], 'safe'],
+            [['id', 'user_id', 'factoryType', 'factoryHits', 'factoryRating', 'bannerTop', 'bannerMain', 'bannerCategory', 'bannerRegion', 'factoryShow', 'compare'], 'integer'],
+            [['factoryTitle', 'factoryDesc', 'factoryAddress', 'factoryRegion', 'factoryCountry', 'factoryWebsite', 'factoryLogo', 'website100'], 'safe'],
         ];
     }
 
@@ -61,17 +59,24 @@ class FactoriesSearch extends Factories
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
+            'factoryType' => $this->factoryType,
+            'factoryHits' => $this->factoryHits,
+            'factoryRating' => $this->factoryRating,
+            'bannerTop' => $this->bannerTop,
+            'bannerMain' => $this->bannerMain,
+            'bannerCategory' => $this->bannerCategory,
+            'bannerRegion' => $this->bannerRegion,
+            'factoryShow' => $this->factoryShow,
             'compare' => $this->compare,
         ]);
 
-        $query->andFilterWhere(['like', 'factory_title', $this->factory_title])
-            ->andFilterWhere(['like', 'factory_desc', $this->factory_desc])
-            ->andFilterWhere(['like', 'factory_address', $this->factory_address])
-            ->andFilterWhere(['like', 'factory_region', $this->factory_region])
-            ->andFilterWhere(['like', 'factory_country', $this->factory_country])
-            ->andFilterWhere(['like', 'factory_website', $this->factory_website])
-            ->andFilterWhere(['like', 'factory_email', $this->factory_email])
-            ->andFilterWhere(['like', 'factory_logo', $this->factory_logo])
+        $query->andFilterWhere(['like', 'factoryTitle', $this->factoryTitle])
+            ->andFilterWhere(['like', 'factoryDesc', $this->factoryDesc])
+            ->andFilterWhere(['like', 'factoryAddress', $this->factoryAddress])
+            ->andFilterWhere(['like', 'factoryRegion', $this->factoryRegion])
+            ->andFilterWhere(['like', 'factoryCountry', $this->factoryCountry])
+            ->andFilterWhere(['like', 'factoryWebsite', $this->factoryWebsite])
+            ->andFilterWhere(['like', 'factoryLogo', $this->factoryLogo])
             ->andFilterWhere(['like', 'website100', $this->website100]);
 
         return $dataProvider;
