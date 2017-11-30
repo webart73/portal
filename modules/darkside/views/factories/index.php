@@ -32,15 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'factoryAddress',
             // 'factoryRegion',
             // 'factoryCountry',
-            // 'factoryWebsite',
+             'factoryWebsite:url',
             // 'factoryLogo',
             [
-                'label' => 'Картинка',
+                'label' => 'Логотип',
                 'format' => 'raw',
                 'value' => function ($data) {
                     return Html::img(Url::toRoute(  "@web/$data->factoryLogo"), [
                         'alt' => $data->factoryTitle,
-                        'style' => 'width:150px;'
+                        'style' => 'width:100px;'
                     ]);
                 },
             ],

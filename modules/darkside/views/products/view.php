@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -32,7 +33,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'factoryId',
             'productTitle',
             'productDesc:ntext',
-            'productImage',
+            //'productImage',
+            [
+                'label' => 'Изображение',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::img(Url::toRoute(  "@web/$data->productImage"), [
+                        'alt' => $data->productTitle,
+                        'style' => 'width:300px;'
+                    ]);
+                },
+            ],
             'showProduct',
             'link100',
         ],
