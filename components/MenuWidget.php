@@ -3,7 +3,7 @@
 namespace app\components;
 
 use yii\base\Widget;
-use app\modules\darkside\models\Categories;
+use app\models\Categories;
 use Yii;
 
 class MenuWidget extends Widget

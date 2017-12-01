@@ -8,7 +8,7 @@ use app\modules\darkside\models\CategoriesSearch;
 use yii\web\NotFoundHttpException;
 
 /**
- * CategoriesController implements the CRUD actions for Categories model.
+ * CategoryController implements the CRUD actions for Categories model.
  */
 class CategoriesController extends AppDarksideController
 {
