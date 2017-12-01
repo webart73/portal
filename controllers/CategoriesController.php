@@ -4,7 +4,7 @@ namespace app\controllers;
 
 use app\models\Factories;
 
-class CategoryController extends AppController
+class CategoriesController extends AppController
 {
     public function actionIndex()
     {

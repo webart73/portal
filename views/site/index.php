@@ -1,6 +1,7 @@
 <?php
 
-/* @var $this yii\web\View */
+use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = 'My Yii Application';
 ?>
@@ -8,14 +9,33 @@ $this->title = 'My Yii Application';
     <div class="body-content">
         <div class="row">
             <div class="col-lg-4">
-                <?= \app\components\MenuWidget::widget(['tpl'=>'menu']);?>
+                <?= \app\components\MenuWidget::widget(['tpl' => 'menu']); ?>
             </div>
             <div class="col-lg-8">
-                <h2>Heading</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <?php if (!empty($bannerMain)) : ?>
+                    <?php foreach ($bannerMain as $item) : ?>
+                        <div class="row">
+                            <h2>
+                                <a href="<?= Url::to(['factories/view', 'id' => $item->id]) ?>"><?= $item->id . ' ' . $item->factoryTitle; ?></a>
+                            </h2>
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <a href="<?= Url::to(['factories/view', 'id' => $item->id]) ?>"><?= Html::img("@web/{$item->factoryLogo}", ['class' => 'img-thumbnail', 'alt' => $item->factoryTitle]); ?></a>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div>
+                                        <?= $item->factoryDesc; ?>
+                                        <hr>
+                                    </div>
+                                    <div>
+                                        <?= $item->factoryAddress; ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
     </div>
