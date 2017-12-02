@@ -6,7 +6,7 @@ use yii\helpers\Url;
 $this->title = 'My Yii Application';
 ?>
 <div class="site-index">
-    <div class="body-content">
+    <div class="container">
         <div class="row">
             <div class="col-lg-3">
                 <?= \app\components\MenuWidget::widget(['tpl' => 'menu']); ?>
@@ -15,9 +15,11 @@ $this->title = 'My Yii Application';
                 <?php if (!empty($bannerMain)) : ?>
                     <?php foreach ($bannerMain as $item) : ?>
                         <div class="row">
+                            <div class="col-xs-12">
                             <h2>
                                 <a href="<?= Url::to(['factories/view', 'id' => $item->id]) ?>"><?= $item->id . ' ' . $item->factoryTitle; ?></a>
                             </h2>
+                            </div>
                             <div class="col-sm-3">
                                 <a href="<?= Url::to(['factories/view', 'id' => $item->id]) ?>"><?= Html::img("@web/{$item->factoryLogo}", ['class' => 'img-thumbnail', 'alt' => $item->factoryTitle]); ?></a>
                             </div>

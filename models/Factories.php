@@ -44,7 +44,8 @@ class Factories extends \yii\db\ActiveRecord
 
     public function getProducts()
     {
-        return $this->hasMany(Products::className(), ['factoryId' => 'id']);
+        return $this->hasMany(Products::className(), ['factoryId' => 'id'])
+            ->where(' showProduct = 1');
     }
 
     /**

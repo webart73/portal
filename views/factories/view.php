@@ -48,8 +48,8 @@ $this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
                 <?php $i = 1 ?>
                 <?php foreach ($products as $product) : ?>
                     <div class="col-sm-3">
-                        <h4><?= $product->productTitle; ?></h4>
-                        <?= Html::img("@web/{$product->productImage}", ['class' => 'img-thumbnail', 'alt' => $product->productTitle]); ?>
+                        <h4><a href="<?= Url::to(['products/view', 'id' => $product->id]) ?>"><?= $product->productTitle; ?></a></h4>
+                        <a href="<?= Url::to(['products/view', 'id' => $product->id]) ?>"><?= Html::img("@web/{$product->productImage}", ['class' => 'img-thumbnail', 'alt' => $product->productTitle]); ?></a>
                     </div>
                     <?php if (!($i % 4)) : ?>
                         <div class="clearfix"></div>
