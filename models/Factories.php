@@ -36,9 +36,10 @@ class Factories extends \yii\db\ActiveRecord
         return 'dvg73_factories';
     }
 
-    public function getContacts()
+    public function getContacts($type)
     {
-        return $this->hasMany(Contacts::className(), ['factoryId' => 'id']);
+        return $this->hasMany(Contacts::className(), ['factoryId' => 'id'])
+            ->where(' contactType = :type', [':type' => $type]);
     }
 
     public function getProducts()

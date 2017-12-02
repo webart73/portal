@@ -16,8 +16,9 @@ class FactoriesController extends AppController
     {
         $id = Yii::$app->request->get('id');
         $factory = Factories::findOne($id);
-        $contacts = $factory->contacts;
+        $phones = $factory->getContacts(1)->all();
+        $emails = $factory->getContacts(2)->all();
         $products = $factory->products;
-        return $this->render('view', compact('factory', 'contacts', 'products'));
+        return $this->render('view', compact('factory', 'phones', 'emails', 'products'));
     }
 }
