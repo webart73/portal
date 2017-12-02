@@ -18,18 +18,16 @@ $this->title = 'My Yii Application';
                             <h2>
                                 <a href="<?= Url::to(['factories/view', 'id' => $item->id]) ?>"><?= $item->id . ' ' . $item->factoryTitle; ?></a>
                             </h2>
-                            <div class="row">
-                                <div class="col-sm-3">
-                                    <a href="<?= Url::to(['factories/view', 'id' => $item->id]) ?>"><?= Html::img("@web/{$item->factoryLogo}", ['class' => 'img-thumbnail', 'alt' => $item->factoryTitle]); ?></a>
+                            <div class="col-sm-3">
+                                <a href="<?= Url::to(['factories/view', 'id' => $item->id]) ?>"><?= Html::img("@web/{$item->factoryLogo}", ['class' => 'img-thumbnail', 'alt' => $item->factoryTitle]); ?></a>
+                            </div>
+                            <div class="col-sm-9">
+                                <div>
+                                    <?= $item->factoryDesc; ?>
+                                    <hr>
                                 </div>
-                                <div class="col-sm-9">
-                                    <div>
-                                        <?= $item->factoryDesc; ?>
-                                        <hr>
-                                    </div>
-                                    <div>
-                                        <?= $item->factoryAddress; ?>
-                                    </div>
+                                <div>
+                                    <?= $item->factoryAddress; ?>
                                 </div>
                             </div>
                             <hr>
