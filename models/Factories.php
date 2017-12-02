@@ -41,6 +41,11 @@ class Factories extends \yii\db\ActiveRecord
         return $this->hasMany(Contacts::className(), ['factoryId' => 'id']);
     }
 
+    public function getProducts()
+    {
+        return $this->hasMany(Products::className(), ['factoryId' => 'id']);
+    }
+
     /**
      * @inheritdoc
      */

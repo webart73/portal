@@ -1,6 +1,7 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
 
@@ -30,5 +31,13 @@ $this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
+        <?php if (!empty($products)) : ?>
+            <?php foreach ($products as $product) : ?>
+                <div class="col-sm-3">
+                    <h4><?= $product->productTitle; ?></h4>
+                    <?= Html::img("@web/{$product->productImage}", ['class' => 'img-thumbnail', 'alt' => $product->productTitle]); ?>
+                </div>
+            <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 </div>
