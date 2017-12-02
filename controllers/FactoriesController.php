@@ -12,10 +12,11 @@ class FactoriesController extends AppController
         return $this->render('index');
     }
 
-    public function actionView($id)
+    public function actionView()
     {
         $id = Yii::$app->request->get('id');
         $factory = Factories::findOne($id);
-        return $this->render('view',compact('factory'));
+        $contacts= $factory->contacts;
+        return $this->render('view',compact('factory','contacts'));
     }
 }

@@ -2,7 +2,7 @@
 
 use yii\helpers\Html;
 
-$this->title = $factory->factoryTitle . ' | ' . Yii::$app->params['siteName'];
+$this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
 
 ?>
 
@@ -20,8 +20,15 @@ $this->title = $factory->factoryTitle . ' | ' . Yii::$app->params['siteName'];
             </div>
             <div>
                 <?= $factory->factoryAddress; ?>
+                <hr>
             </div>
+            <?php if (!empty($contacts)) : ?>
+                <?php foreach ($contacts as $contact) : ?>
+                    <div>
+                        <?= $contact->contactValue; ?>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
-    <hr>
 </div>

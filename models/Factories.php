@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 
 /**
  * This is the model class for table "dvg73_factories".
@@ -35,6 +34,11 @@ class Factories extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'dvg73_factories';
+    }
+
+    public function getContacts()
+    {
+        return $this->hasMany(Contacts::className(), ['factoryId' => 'id']);
     }
 
     /**
