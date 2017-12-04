@@ -23,14 +23,19 @@ class Regions extends \yii\db\ActiveRecord
 
     public static function getTree()
     {
-        $data = Regions::find()->indexBy('id')->asArray()->all();
-
+        $regions = Regions::find()->indexBy('id')->asArray()->all();
+        foreach ($regions as &$region) {
+            $region['value'] = Factories::find()->where(['factoryRegion' => $region ['id']])->count();
+            if (0 < $region['value']) {
+                $regions[$region['parentId']]['value'] += $region['value'];
+            }
+        }
         $tree = [];
-        foreach ($data as $id => &$node) {
+        foreach ($regions as $id => &$node) {
             if (!$node['parentId'])
                 $tree[$id] =& $node;
             else
-                $data[$node['parentId']]['childs'][$node['id']] = &$node;
+                $regions[$node['parentId']]['childs'][$node['id']] = &$node;
         }
         return $tree;
     }
