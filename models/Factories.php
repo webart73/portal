@@ -48,6 +48,11 @@ class Factories extends \yii\db\ActiveRecord
             ->where(' showProduct = 1');
     }
 
+    public function getRegion()
+    {
+        return $this->hasOne(Regions::className(), ['id' => 'factoryRegion']);
+    }
+
     /**
      * @inheritdoc
      */

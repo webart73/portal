@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 
 /**
  * This is the model class for table "dvg73_products".
@@ -28,6 +27,8 @@ class Products extends \yii\db\ActiveRecord
     public function getFactory(){
         return  $this->hasOne(Factories::className(),['id'=>'factoryId']);
     }
+
+
 
     /**
      * @inheritdoc

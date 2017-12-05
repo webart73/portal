@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use Yii;
 
 /**
  * This is the model class for table "dvg73_categories".
@@ -21,6 +20,11 @@ class Categories extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'dvg73_categories';
+    }
+
+    public function getCategories()
+    {
+        return $this->hasOne(Categories::className(), ['id' => 'parentId']);
     }
 
     /**

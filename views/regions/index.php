@@ -2,6 +2,8 @@
 
 use yii\helpers\Url;
 
+$this->title = 'Мебельные фабрики России | ' . Yii::$app->name;
+
 ?>
 
 <h1>regions/index</h1>
@@ -10,7 +12,6 @@ use yii\helpers\Url;
         <?= \app\components\MenuWidget::widget(['tpl' => 'menu']); ?>
     </div>
     <div class="col-lg-9">
-        <?php //debug($tree);?>
         <?php foreach ($tree as $item) : ?>
             <?php if (0 != $item['value']) : ?>
                 <h4>
