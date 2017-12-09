@@ -1,6 +1,7 @@
 <?php
 
 namespace app\modules\darkside\models;
+use app\models\Contacts;
 
 
 /**
@@ -34,6 +35,17 @@ class Factories extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'dvg73_factories';
+    }
+
+    public function getRegion()
+    {
+        return $this->hasOne(Regions::className(), ['id' => 'factoryRegion']);
+    }
+
+    public function getContacts($type)
+    {
+        return $this->hasMany(Contacts::className(), ['factoryId' => 'id'])
+            ->where(' contactType = :type', [':type' => $type]);
     }
 
     /**

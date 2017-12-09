@@ -20,10 +20,11 @@ class FactoriesController extends AppDarksideController
     {
         $searchModel = new FactoriesSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
+//        $emails = $factories->getContacts(2)->all();
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+//            'emails' => $emails,
         ]);
     }
 

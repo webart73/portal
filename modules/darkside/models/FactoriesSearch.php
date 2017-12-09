@@ -39,7 +39,7 @@ class FactoriesSearch extends Factories
      */
     public function search($params)
     {
-        $query = Factories::find();
+        $query = Factories::find()->with('region');
 
         // add conditions that should always apply here
 

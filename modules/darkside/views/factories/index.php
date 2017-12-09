@@ -12,16 +12,14 @@ $this->title = 'Factories';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="factories-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
     <p>
         <?= Html::a('Create Factories', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+//        'emails' => $emails,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
@@ -29,10 +27,30 @@ $this->params['breadcrumbs'][] = $this->title;
             //'user_id',
             'factoryTitle',
             //'factoryDesc:ntext',
+//            [
+//                'attribute' => 'factoryRegion',
+//                'value' => function ($data) {
+//                    $region = '/';
+//                    if (NULL !== $data->region) {
+//                        $region = $data->region->regionTitle;
+//                    };
+//                    return $region;
+//                },
+//            ],
             'factoryAddress',
             // 'factoryRegion',
             // 'factoryCountry',
              'factoryWebsite:url',
+//            [
+//                'attribute' => 'factoryEmail',
+//                'value' => function ($email) {
+//                    $email = '/';
+//                    if (NULL !== $data->region) {
+//                        $region = $data->region->regionTitle;
+//                    };
+//                    return $region;
+//                },
+//            ],
             // 'factoryLogo',
             [
                 'label' => 'Логотип',
