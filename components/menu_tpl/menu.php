@@ -1,10 +1,11 @@
 <li>
-    <a href="<?=\yii\helpers\Url::to(['category/view','id'=>$category['id']])?>"><?= $category['categoryTitle']?></a>
-    <?php if (isset($category['childs'])):?>
+    <?php if (!isset($category['childs'])): ?><a href="<?= \yii\helpers\Url::to(['categories/view', 'id' => $category['id']]) ?>">
+        <?php endif; ?><?= $category['categoryTitle'] ?><?php if (!isset($category['childs'])): ?></a><?php endif; ?>
+    <?php if (isset($category['childs'])): ?>
         <ul>
-            <?=$this->getMenuHtml($category['childs'])?>
+            <?= $this->getMenuHtml($category['childs']) ?>
         </ul>
-    <?php endif;?>
+    <?php endif; ?>
 </li>
 
  

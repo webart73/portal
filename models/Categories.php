@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use yii\data\Pagination;
 
 /**
  * This is the model class for table "dvg73_categories".
@@ -25,6 +26,17 @@ class Categories extends \yii\db\ActiveRecord
     public function getCategories()
     {
         return $this->hasOne(Categories::className(), ['id' => 'parentId']);
+    }
+
+    public function getProducts()
+    {
+        $query = Products::find()->where(['showProduct' => 1])->andWhere(['categoryId' => $this->id]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 16]);
+        $products = $this->hasMany(Products::className(), ['categoryId' => 'id'])
+            ->where(' showProduct = 1')
+            ->offset($pages->offset)
+            ->limit($pages->limit)->all();
+        return compact('products','pages');
     }
 
     /**

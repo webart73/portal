@@ -2,6 +2,8 @@
 
 namespace app\models;
 
+use yii\data\Pagination;
+
 
 /**
  * This is the model class for table "dvg73_factories".
@@ -44,8 +46,13 @@ class Factories extends \yii\db\ActiveRecord
 
     public function getProducts()
     {
-        return $this->hasMany(Products::className(), ['factoryId' => 'id'])
-            ->where(' showProduct = 1');
+        $query = Products::find()->where(['showProduct' => 1])->andWhere(['factoryId' => $this->id]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 8]);
+        $products = $this->hasMany(Products::className(), ['factoryId' => 'id'])
+            ->where(' showProduct = 1')
+            ->offset($pages->offset)
+            ->limit($pages->limit)->all();
+        return compact('products','pages');
     }
 
     public function getRegion()

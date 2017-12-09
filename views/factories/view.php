@@ -46,9 +46,15 @@ $this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
             </div>
             <?php if (!empty($products)) : ?>
                 <?php $i = 1 ?>
-                <?php foreach ($products as $product) : ?>
+<!--                --><?php //debug($products);
+//                die; ?>
+                <?php foreach ($products['products'] as $product) : ?>
                     <div class="col-sm-3">
-                        <h4><a href="<?= Url::to(['products/view', 'id' => $product->id]) ?>"><?= $product->productTitle; ?></a></h4>
+                        <h4>
+<!--                            --><?php //debug($product);
+//                            die; ?>
+                            <a href="<?= Url::to(['products/view', 'id' => $product->id]) ?>"><?= $product->productTitle; ?></a>
+                        </h4>
                         <a href="<?= Url::to(['products/view', 'id' => $product->id]) ?>"><?= Html::img("@web/{$product->productImage}", ['class' => 'img-thumbnail', 'alt' => $product->productTitle]); ?></a>
                     </div>
                     <?php if (!($i % 4)) : ?>
@@ -57,6 +63,8 @@ $this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
                     $i++; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
+            <div class="clearfix"></div>
+            <?= \yii\widgets\LinkPager::widget(['pagination' => $products['pages'],]); ?>
         </div>
     </div>
 </div>
