@@ -8,7 +8,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language' => 'ru-RU',
-    'defaultRoute'  => 'site/index',
+    'defaultRoute' => 'site/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm' => '@vendor/npm-asset',
@@ -55,7 +55,12 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-                'category/<id:\+d>' => 'category/view',
+                '/' => 'site/index',
+                '<action:(login|about|contact)>' => 'site/<action>',
+                'admin' => 'darkside',
+                'category/<id:\d+>' => 'categories/view',
+                'region/<id:\d+>' => 'regions/region',
+                'town/<id:\d+>' => 'regions/town',
             ],
         ],
     ],

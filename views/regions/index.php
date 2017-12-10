@@ -15,7 +15,7 @@ $this->title = 'Мебельные фабрики России | ' . Yii::$app->
         <?php foreach ($tree as $item) : ?>
             <?php if (0 != $item['value']) : ?>
                 <h4>
-                    <a href="<?= Url::to(['regions/region', 'id' => $item['id']]) ?>"><?= $item['regionTitle'] . ' [' . $item['value'] . ']'; ?></a>
+                    <a href="<?= Url::to(['regions/region/', 'id' => $item['id']]) ?>"><?= $item['regionTitle'] . ' [' . $item['value'] . ']'; ?></a>
                 </h4>
                 <div class="row">
                     <?php if (isset($item['childs'])) : ?>

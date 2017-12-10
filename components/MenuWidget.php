@@ -37,7 +37,7 @@ class MenuWidget extends Widget
         $this->tree = $this->getTree();
         $this->menuHtml = $this->getMenuHtml($this->tree);
         if ($this->tpl == 'menu.php') {
-            Yii::$app->cache->set('menu', $this->menuHtml, 60);
+            Yii::$app->cache->set('menu', $this->menuHtml, 10);
         }
         return $this->menuHtml;
     }

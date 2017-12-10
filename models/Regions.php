@@ -57,11 +57,11 @@ class Regions extends \yii\db\ActiveRecord
         }
         foreach ($tree as &$region) {
             $sum = 0;
+            $region['alias'] = str2url($region['regionTitle']);
             if (isset($region['childs'])) {
                 foreach ($region['childs'] as $town) {
                     $sum += $town['value'];
                 }
-                echo $sum;
                 $region['value'] = $sum;
             }
         }

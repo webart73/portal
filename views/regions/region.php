@@ -7,7 +7,7 @@ $this->title = $tree[$id]['regionTitle'] . '. Мебельные фабрики 
 
 ?>
 
-<h1>regions/region</h1>
+<h1><?= $tree[$id]['regionTitle']?></h1>
 <div class="row">
     <div class="col-lg-3">
         <?= \app\components\MenuWidget::widget(['tpl' => 'menu']); ?>
