@@ -2,7 +2,7 @@
 
 namespace app\components;
 
-use app\models\Products;
+//use app\models\Products;
 use yii\base\Widget;
 use app\models\Categories;
 use Yii;

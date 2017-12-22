@@ -61,6 +61,7 @@ $config = [
                 'category/<id:\d+>' => 'categories/view',
                 'region/<id:\d+>' => 'regions/region',
                 'town/<id:\d+>' => 'regions/town',
+                'factory/<id:\d+>' => 'factories/view',
             ],
         ],
     ],

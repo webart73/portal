@@ -28,7 +28,9 @@ class Products extends \yii\db\ActiveRecord
         return  $this->hasOne(Factories::className(),['id'=>'factoryId']);
     }
 
-
+    public function getCategory(){
+        return  $this->hasOne(Categories::className(),['id'=>'categoryId']);
+    }
 
     /**
      * @inheritdoc

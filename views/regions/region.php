@@ -7,20 +7,19 @@ $this->title = $tree[$id]['regionTitle'] . '. Мебельные фабрики 
 
 ?>
 
-<h1><?= $tree[$id]['regionTitle']?></h1>
 <div class="row">
     <div class="col-lg-3">
         <?= \app\components\MenuWidget::widget(['tpl' => 'menu']); ?>
     </div>
     <div class="col-lg-9">
-        <?php foreach ($tree as $item) : ?>
-            <?php if (0 != $item['value']) : ?>
-                <h4>
-                    <?= $item['regionTitle'] . ' [' . $item['value'] . ']'; ?>
-                </h4>
+        <?= \yii\widgets\Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <h1><?= $tree[$id]['regionTitle'] . ' [' . $tree[$id]['value'] . ']'; ?></h1>
+            <?php if (0 != $tree[$id]['value']) : ?>
                 <div class="row">
-                    <?php if (isset($item['childs'])) : ?>
-                        <?php foreach ($item['childs'] as $child) : ?>
+                    <?php if (isset($tree[$id]['childs'])) : ?>
+                        <?php foreach ($tree[$id]['childs'] as $child) : ?>
                             <?php if (0 != $child['value']) : ?>
                                 <div class="col-sm-3">
                                     <a href="<?= Url::to(['regions/town', 'id' => $child['id']]) ?>"><?= $child['regionTitle'] . ' [' . $child['value'] . ']'; ?></a>
@@ -31,7 +30,7 @@ $this->title = $tree[$id]['regionTitle'] . '. Мебельные фабрики 
                 </div>
                 <hr>
             <?php endif; ?>
-        <?php endforeach; ?>
+<!--        --><?php //endforeach; ?>
         <?php foreach ($tree[$id]['childs'] as $town) : ?>
             <?php foreach ($town['factories'] as $item) : ?>
                 <div class="row">

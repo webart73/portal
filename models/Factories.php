@@ -52,11 +52,18 @@ class Factories extends \yii\db\ActiveRecord
             ->where(' showProduct = 1')
             ->offset($pages->offset)
             ->limit($pages->limit)->all();
-        return compact('products','pages');
+        return compact('products', 'pages');
     }
 
     public function getRegion()
     {
+        return $this->hasOne(Regions::className(), ['id' => 'factoryRegion']);
+    }
+
+    public function getCategories()
+    {
+        $categories = Products::find()->where(['showProduct' => 1])->andWhere(['factoryId' => $this->id])->with(category)->all();
+        debug($categories);
         return $this->hasOne(Regions::className(), ['id' => 'factoryRegion']);
     }
 

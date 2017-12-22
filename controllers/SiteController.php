@@ -9,6 +9,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\Factories;
+use yii\helpers\Url;
 
 class SiteController extends AppController
 {
@@ -61,6 +62,7 @@ class SiteController extends AppController
      */
     public function actionIndex()
     {
+        Url::remember();
         $bannerMain = Factories::find()->where(['bannerMain' => 1, 'factoryShow' => 1])->all();
         return $this->render('index', compact('bannerMain'));
     }

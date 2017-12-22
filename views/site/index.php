@@ -17,7 +17,7 @@ $this->title = 'My Yii Application';
                         <div class="row">
                             <div class="col-xs-12">
                             <h2>
-                                <a href="<?= Url::to(['factories/view', 'id' => $item->id]) ?>"><?= $item->id . ' ' . $item->factoryTitle; ?></a>
+                                <a href="<?= Url::to(['factories/view', 'id' => $item->id]) ?>"><?= $item->factoryTitle; ?></a>
                             </h2>
                             </div>
                             <div class="col-sm-3">

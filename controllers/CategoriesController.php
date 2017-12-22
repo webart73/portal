@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use Yii;
 use app\models\Categories;
+use yii\helpers\Url;
 
 class CategoriesController extends AppController
 {
@@ -14,6 +15,7 @@ class CategoriesController extends AppController
 
     public function actionView()
     {
+        Url::remember();
         $id = Yii::$app->request->get('id');
         $category = Categories::findOne($id);
         $products = $category->products;

@@ -12,7 +12,10 @@ $this->title = $tree[$id]['regionTitle'] . '. Мебельные фабрики 
         <?= \app\components\MenuWidget::widget(['tpl' => 'menu']); ?>
     </div>
     <div class="col-lg-9">
-        <h1><?= $tree[$id]['regionTitle'] ?></h1>
+        <?= \yii\widgets\Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <h1><?= $tree[$id]['regionTitle']; ?></h1>
         <?php foreach ($tree[$id]['factories'] as $item) : ?>
             <div class="row">
                 <div class="col-xs-12">

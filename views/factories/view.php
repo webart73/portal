@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
+
 $this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
 
 ?>
@@ -13,6 +14,9 @@ $this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
         <?= \app\components\MenuWidget::widget(['tpl' => 'menu']); ?>
     </div>
     <div class="col-lg-9">
+        <?= \yii\widgets\Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
         <h1><?= $factory->factoryTitle ?></h1>
         <div class="row">
             <div class="col-sm-3">
@@ -46,13 +50,13 @@ $this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
             </div>
             <?php if (!empty($products)) : ?>
                 <?php $i = 1 ?>
-<!--                --><?php //debug($products);
+                <!--                --><?php //debug($products);
 //                die; ?>
                 <?php foreach ($products['products'] as $product) : ?>
                     <div class="col-sm-3">
                         <h4>
-<!--                            --><?php //debug($product);
-//                            die; ?>
+                            <!--                            --><?php //debug($product);
+                            //                            die; ?>
                             <a href="<?= Url::to(['products/view', 'id' => $product->id]) ?>"><?= $product->productTitle; ?></a>
                         </h4>
                         <a href="<?= Url::to(['products/view', 'id' => $product->id]) ?>"><?= Html::img("@web/{$product->productImage}", ['class' => 'img-thumbnail', 'alt' => $product->productTitle]); ?></a>

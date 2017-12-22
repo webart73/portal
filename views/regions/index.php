@@ -6,12 +6,15 @@ $this->title = 'Мебельные фабрики России | ' . Yii::$app->
 
 ?>
 
-<h1>regions/index</h1>
 <div class="row">
     <div class="col-lg-3">
         <?= \app\components\MenuWidget::widget(['tpl' => 'menu']); ?>
     </div>
     <div class="col-lg-9">
+        <?= \yii\widgets\Breadcrumbs::widget([
+            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+        ]) ?>
+        <h1>Мебельные фабрики по регионам России</h1>
         <?php foreach ($tree as $item) : ?>
             <?php if (0 != $item['value']) : ?>
                 <h4>
