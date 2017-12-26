@@ -1,10 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\Url;
-
 
 $this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
+
+$request = Yii::$app->request;
+
+$get = $request->get();
 
 ?>
 
@@ -48,18 +50,34 @@ $this->title = $factory->factoryTitle . ' | ' . Yii::$app->name;
                 <br>
                 <br>
             </div>
+        </div>
+        <div class="row">
+            <?php if (isset($get['category'])) : ?>
+                <div class="col-sm-3">
+                    <h5>
+                        <?= Html::a('Все',['factories/view','id' => $factory->id]) ?>
+                    </h5>
+                </div>
+            <?php endif; ?>
+            <?php if (!empty($categories)) : ?>
+                <?php foreach ($categories as $category) : ?>
+                    <div class="col-sm-3">
+                        <h5>
+                            <?= Html::a($category['categoryTitle'],['factories/view','id' => $factory->id, 'category' => $category['id']]) ?>
+                        </h5>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+        <div class="row">
             <?php if (!empty($products)) : ?>
                 <?php $i = 1 ?>
-                <!--                --><?php //debug($products);
-//                die; ?>
                 <?php foreach ($products['products'] as $product) : ?>
                     <div class="col-sm-3">
                         <h4>
-                            <!--                            --><?php //debug($product);
-                            //                            die; ?>
-                            <a href="<?= Url::to(['products/view', 'id' => $product->id]) ?>"><?= $product->productTitle; ?></a>
+                            <?= Html::a($product->productTitle,['products/view', 'id' => $product->id]) ?>
                         </h4>
-                        <a href="<?= Url::to(['products/view', 'id' => $product->id]) ?>"><?= Html::img("@web/{$product->productImage}", ['class' => 'img-thumbnail', 'alt' => $product->productTitle]); ?></a>
+                        <?= Html::a(Html::img("@web/{$product->productImage}", ['class' => 'img-thumbnail', 'alt' => $product->productTitle]),['products/view', 'id' => $product->id]) ?>
                     </div>
                     <?php if (!($i % 4)) : ?>
                         <div class="clearfix"></div>

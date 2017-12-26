@@ -1,6 +1,6 @@
 <?php
 
-use yii\helpers\Url;
+use yii\helpers\Html;
 
 $this->title = 'Мебельные фабрики России | ' . Yii::$app->name;
 
@@ -18,14 +18,14 @@ $this->title = 'Мебельные фабрики России | ' . Yii::$app->
         <?php foreach ($tree as $item) : ?>
             <?php if (0 != $item['value']) : ?>
                 <h4>
-                    <a href="<?= Url::to(['regions/region/', 'id' => $item['id']]) ?>"><?= $item['regionTitle'] . ' [' . $item['value'] . ']'; ?></a>
+                    <?= Html::a($item['regionTitle'] . ' [' . $item['value'] . ']', ['regions/region/', 'id' => $item['id']]) ?>
                 </h4>
                 <div class="row">
                     <?php if (isset($item['childs'])) : ?>
                         <?php foreach ($item['childs'] as $child) : ?>
                             <?php if (0 != $child['value']) : ?>
                                 <div class="col-sm-3">
-                                    <a href="<?= Url::to(['regions/town', 'id' => $child['id']]) ?>"><?= $child['regionTitle'] . ' [' . $child['value'] . ']'; ?></a>
+                                    <?= Html::a($child['regionTitle'] . ' [' . $child['value'] . ']', ['regions/town', 'id' => $child['id']]) ?>
                                 </div>
                             <?php endif; ?>
                         <?php endforeach; ?>

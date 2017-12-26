@@ -31,7 +31,7 @@ class Categories extends \yii\db\ActiveRecord
     public function getProducts()
     {
         $query = Products::find()->where(['showProduct' => 1])->andWhere(['categoryId' => $this->id]);
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 16]);
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 24]);
         $products = $this->hasMany(Products::className(), ['categoryId' => 'id'])
             ->where(' showProduct = 1')
             ->offset($pages->offset)

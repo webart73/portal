@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\Url;
 
 $this->title = $tree[$id]['regionTitle'] . '. Мебельные фабрики | ' . Yii::$app->name;
 
@@ -20,11 +19,11 @@ $this->title = $tree[$id]['regionTitle'] . '. Мебельные фабрики 
             <div class="row">
                 <div class="col-xs-12">
                     <h2>
-                        <a href="<?= Url::to(['factories/view', 'id' => $item['id']]) ?>"><?= $item['factoryTitle']; ?></a>
+                        <?= Html::a($item['factoryTitle'], ['factories/view', 'id' => $item['id']]) ?>
                     </h2>
                 </div>
                 <div class="col-sm-3">
-                    <a href="<?= Url::to(['factories/view', 'id' => $item['id']]) ?>"><?= Html::img("@web/{$item['factoryLogo']}", ['class' => 'img-thumbnail', 'alt' => $item['factoryTitle']]); ?></a>
+                    <?= Html::a(Html::img("@web/{$item['factoryLogo']}", ['class' => 'img-thumbnail', 'alt' => $item['factoryTitle']]), ['factories/view', 'id' => $item['id']]) ?>
                 </div>
                 <div class="col-sm-9">
                     <div>

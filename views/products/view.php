@@ -1,7 +1,6 @@
 <?php
 
 use yii\helpers\Html;
-use  yii\helpers\Url;
 
 $this->title = $product->productTitle . ' | ' . Yii::$app->name;
 
@@ -29,8 +28,8 @@ $this->title = $product->productTitle . ' | ' . Yii::$app->name;
         </div>
         <div class="row">
             <div class="col-sm-3">
-                <a href="<?= Url::to(['factories/view', 'id' => $factory->id]) ?>"><?= Html::img("@web/{$factory->factoryLogo}", ['class' => 'img-thumbnail', 'alt' => $factory->factoryTitle]); ?></a>
-                <a href="<?= Url::to(['factories/view', 'id' => $factory->id]) ?>"><?= $factory->factoryTitle; ?></a>
+                <?= Html::a(Html::img("@web/{$factory->factoryLogo}", ['class' => 'img-thumbnail', 'alt' => $factory->factoryTitle]), ['factories/view', 'id' => $factory->id]) ?>
+                <?= Html::a($factory->factoryTitle, ['factories/view', 'id' => $factory->id]) ?>
             </div>
         </div>
     </div>

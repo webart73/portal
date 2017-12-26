@@ -44,14 +44,32 @@ class Factories extends \yii\db\ActiveRecord
             ->where(' contactType = :type', [':type' => $type]);
     }
 
-    public function getProducts()
+    public function getProducts($category = 0)
     {
-        $query = Products::find()->where(['showProduct' => 1])->andWhere(['factoryId' => $this->id]);
-        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 8]);
-        $products = $this->hasMany(Products::className(), ['factoryId' => 'id'])
-            ->where(' showProduct = 1')
-            ->offset($pages->offset)
-            ->limit($pages->limit)->all();
+        if ($category) {
+            $query = Products::find()
+                ->where(['showProduct' => 1])
+                ->andWhere(['factoryId' => $this->id])
+                ->andWhere(['categoryId' => $category]);
+        } else {
+            $query = Products::find()
+                ->where(['showProduct' => 1])
+                ->andWhere(['factoryId' => $this->id]);
+        }
+        $pages = new Pagination(['totalCount' => $query->count(), 'pageSize' => 24]);
+        if ($category) {
+            $products = $this->hasMany(Products::className(), ['factoryId' => 'id'])
+                ->where(' showProduct = 1')
+                ->andWhere(['categoryId' => $category])
+                ->offset($pages->offset)
+                ->limit($pages->limit)->all();
+        } else {
+            $products = $this->hasMany(Products::className(), ['factoryId' => 'id'])
+                ->where(' showProduct = 1')
+                ->offset($pages->offset)
+                ->limit($pages->limit)->all();
+        }
+
         return compact('products', 'pages');
     }
 
@@ -62,9 +80,15 @@ class Factories extends \yii\db\ActiveRecord
 
     public function getCategories()
     {
-        $categories = Products::find()->where(['showProduct' => 1])->andWhere(['factoryId' => $this->id])->with(category)->all();
-        debug($categories);
-        return $this->hasOne(Regions::className(), ['id' => 'factoryRegion']);
+        $products = Products::find()->where(['showProduct' => 1])->andWhere(['factoryId' => $this->id])->with('category')->all();
+        foreach ($products as $product) {
+            $categories[] = ['id' => $product['category']['id'], 'categoryTitle' => $product['category']['categoryTitle']];
+        }
+        $categories = getUniqueArray('id', $categories);
+        usort($categories, function ($a, $b) {
+            return strcmp($a['categoryTitle'], $b['categoryTitle']);
+        });
+        return $categories;
     }
 
     /**
