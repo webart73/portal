@@ -20,9 +20,15 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/ct-paper.css',
         'css/site.css',
     ];
     public $js = [
+        'js/bootstrap-datepicker.js',
+        'js/bootstrap-select.js',
+        'js/ct-paper.js',
+        'js/ct-paper-checkbox.js',
+        'js/ct-paper-radio.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
